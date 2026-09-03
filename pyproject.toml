@@ -1,0 +1,10 @@
+[project]
+name = "ask-my-notes"
+version = "0.1.0"
+description = "A from-scratch CLI RAG tutorial that answers questions from local markdown notes."
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
