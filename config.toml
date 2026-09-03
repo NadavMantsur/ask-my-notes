@@ -1,0 +1,28 @@
+# Knobs for the RAG pipeline. After changing chunking or embedding.model,
+# re-run: python -m src.cli ingest
+
+[chunking]
+# Character window size. Larger = more context per chunk, coarser retrieval.
+size = 500
+# Characters shared by adjacent windows so a fact on a boundary is not split in half.
+overlap = 80
+
+[retrieval]
+# How many nearest chunks to put in the prompt. 1 is brittle; 20 adds noise.
+top_k = 4
+
+[embedding]
+# Must be the same model used at ingest and at ask time.
+# Local ONNX MiniLM (no API key). First ingest downloads the model once.
+model = "all-MiniLM-L6-v2"
+
+[generation]
+# Local Ollama chat model. Install Ollama, then: ollama pull llama3.2:1b
+model = "llama3.2:1b"
+# 0 = copy from notes. Raise slightly (e.g. 0.2) only if answers feel robotic.
+temperature = 0.0
+
+[paths]
+data_dir = "data"
+chroma_path = "chroma_db"
+collection_name = "notes"
