@@ -24,6 +24,8 @@ class Chunk:
     chunk_index: int
 
 
+# * makes chunk_size and overlap keyword-only so a call cannot swap the two ints.
+# Good practice: both are ints, so requiring names keeps this clean of that human mix-up.
 def chunk_documents(
     documents: list[Document], *, chunk_size: int, overlap: int
 ) -> list[Chunk]:

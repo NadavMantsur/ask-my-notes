@@ -46,9 +46,9 @@ def ingest(settings: Settings, embed_fn=embed_texts) -> int:
     vectors = embed_fn(
         [chunk.text for chunk in chunks], model=settings.embedding_model
     )
-    client = get_persistent_client(settings.chroma_path)
-    collection = reset_collection(client, settings.collection_name)
-    upsert_chunks(collection, chunks, vectors)
+    client = get_persistent_client(settings.chroma_path) # create the on-disk Chroma folder, usually ./chroma_db.
+    collection = reset_collection(client, settings.collection_name) # create the collection (chroma table), usually "my_notes".
+    upsert_chunks(collection, chunks, vectors) # insert the chunks into the collection.
     return len(chunks)
 
 

@@ -162,6 +162,8 @@ This project chunks by **characters**, not tokens, on purpose. Tokenizers hide t
 
 No cloud API key is required here. Tests inject a fake embedder so CI never downloads the ONNX model.
 
+This project does not import or depend on the `sentence-transformers` package. `all-MiniLM-L6-v2` originated as a Sentence Transformers model, but ingest loads Chroma's ONNX wrapper (`ONNXMiniLM_L6_V2` in `src/embed.py`), not `SentenceTransformer("all-MiniLM-L6-v2")`. Same model family, different runtime. `requirements.txt` has no `sentence-transformers` dependency.
+
 ### Store (`src/index.py`)
 
 **What:** Persistent Chroma client. Delete the collection if it exists, create it empty, upsert ids like `wifi-and-office.md::0` with document text, embedding, and metadata `{source, chunk_index}`.
