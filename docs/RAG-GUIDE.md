@@ -316,4 +316,6 @@ Left out on purpose so the six phases stay visible:
 - Ingesting PDFs or web pages as notes (this PDF is a **guide**, not corpus)
 - LangChain (rebuild the same pipeline with it **after** you can explain each file in `src/`)
 
+Validation of ingest inputs, ask requests, and retrieve/generate outputs is a later product layer. See README **Later: validation (after the v1 follow-ups)** — do not add it until the v1 follow-ups above are done.
+
 When you add those later, you will know which phase they sit on top of. That is the point of building this the long way first.

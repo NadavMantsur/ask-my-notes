@@ -219,6 +219,7 @@ After a real ingest (local MiniLM, no cloud key):
 ## Next steps after v1
 
 - Token- or heading-aware chunking (markdown `#` sections)
+- Metadata enrichment at ingest — attach title, heading path, dates/tags from frontmatter, and file mtime so retrieve can filter and cite more than filename. Skip LLM-generated tags until the corpus is large enough that filters matter.
 - Incremental ingest (hash files, skip unchanged)
 - Hybrid search (keyword + vectors) for exact strings like passwords
 - A cross-encoder reranker on the top k
@@ -228,3 +229,13 @@ After a real ingest (local MiniLM, no cloud key):
 - Streaming tokens
 - Optional CLI overrides (`--top-k`, `--temperature`) over `config.toml`
 - Rebuild the same app with **LangChain** (and optionally LlamaIndex) so each `src/` module maps onto a framework class
+
+---
+
+## Later: validation (after the v1 follow-ups)
+
+Do this **after** the items above. v1 and the first follow-ups keep the six RAG phases obvious; validation is a later product layer on top of ingest and retrieve.
+
+- **Loader / ingest input validation** — file type, file size, encoding, permissions, malware scan, required metadata (after enrichment exists)
+- **Request validation (retrieve / ask)** — `user_id` exists, query is not empty, query length limit, allowed filters (on enriched fields), permissions, rate limit
+- **Output validation (retrieve / ask)** — retrieved chunks and the generated answer match the contract (citations present, no empty hits when the corpus should answer, refuse out-of-scope or unsafe content)
