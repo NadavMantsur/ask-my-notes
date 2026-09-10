@@ -1,6 +1,6 @@
-# ask-my-notes: a from-scratch RAG guide
+# simple-rag-ask-my-notes: a from-scratch RAG guide
 
-This document is the textbook for the ask-my-notes project. You can read it without opening any Python file. The commented modules in `src/` are a second learning path that shows the same ideas as running code.
+This document is the textbook for the simple-rag-ask-my-notes project. You can read it without opening any Python file. The commented modules in `src/` are a second learning path that shows the same ideas as running code.
 
 ---
 
@@ -20,7 +20,7 @@ The model still writes the English. The facts are supposed to come from your fil
 
 ## 2. How this project is organized
 
-ask-my-notes is a command-line app, not a website. You ingest a folder of markdown notes once, then you ask questions.
+simple-rag-ask-my-notes is a command-line app, not a website. You ingest a folder of markdown notes once, then you ask questions.
 
 There are two ways to learn it:
 
@@ -60,7 +60,7 @@ What v1 deliberately does **not** use:
 ## 4. File structure
 
 ```
-ask-my-notes/
+simple-rag-ask-my-notes/
   config.toml              Knobs (not secrets).
   .env.example             Optional OLLAMA_BASE_URL (default is local Ollama).
   .env                     Overrides for that URL (gitignored). Not an OpenAI key.
@@ -85,7 +85,7 @@ ask-my-notes/
   chroma_db/               Created by ingest (gitignored).
   docs/
     RAG-GUIDE.md           This file.
-    ask-my-notes-rag-guide.pdf
+    simple-rag-ask-my-notes-guide.pdf
   scripts/build_guide_pdf.py
 ```
 

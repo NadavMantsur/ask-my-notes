@@ -14,7 +14,7 @@ from fpdf import FPDF
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SOURCE = PROJECT_ROOT / "docs" / "RAG-GUIDE.md"
-OUTPUT = PROJECT_ROOT / "docs" / "ask-my-notes-rag-guide.pdf"
+OUTPUT = PROJECT_ROOT / "docs" / "simple-rag-ask-my-notes-guide.pdf"
 
 
 class GuidePDF(FPDF):
@@ -23,7 +23,7 @@ class GuidePDF(FPDF):
             return
         self.set_font("Helvetica", "I", 9)
         self.set_text_color(90, 90, 90)
-        self.cell(0, 8, "ask-my-notes  |  from-scratch RAG guide", align="L")
+        self.cell(0, 8, "Simple RAG: Ask My Notes  |  from-scratch RAG guide", align="L")
         self.ln(12)
         self.set_text_color(0, 0, 0)
 
@@ -64,7 +64,7 @@ def main() -> None:
     pdf.add_page()
     pdf.set_y(80)
     pdf.set_font("Helvetica", "B", 24)
-    pdf.multi_cell(0, 12, "ask-my-notes", align="C")
+    pdf.multi_cell(0, 12, "simple-rag-ask-my-notes", align="C")
     pdf.ln(4)
     pdf.set_font("Helvetica", "", 14)
     pdf.multi_cell(0, 8, "A from-scratch RAG tutorial", align="C")

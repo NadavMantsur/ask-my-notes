@@ -1,10 +1,10 @@
-# ask-my-notes
+# simple-rag-ask-my-notes
 
 A tiny CLI that answers questions using **only** a local folder of markdown notes, and cites which files it used.
 
 This is a from-scratch RAG tutorial. There is no LangChain, LlamaIndex, or Haystack. Each pipeline phase is one Python file you can read.
 
-**Learning guide (PDF):** [docs/ask-my-notes-rag-guide.pdf](docs/ask-my-notes-rag-guide.pdf) — architecture, file tree, tools, and every phase in prose (so you can learn without opening `src/` first). Markdown source: [docs/RAG-GUIDE.md](docs/RAG-GUIDE.md).
+**Learning guide (PDF):** [docs/simple-rag-ask-my-notes-guide.pdf](docs/simple-rag-ask-my-notes-guide.pdf) — architecture, file tree, tools, and every phase in prose (so you can learn without opening `src/` first). Markdown source: [docs/RAG-GUIDE.md](docs/RAG-GUIDE.md).
 
 ---
 
@@ -15,7 +15,7 @@ You need Python 3.11+. There is **no OpenAI (or other cloud) API key**. `ingest`
 ### 1. Create a virtual environment and install dependencies
 
 ```bash
-cd /path/to/ask-my-notes
+cd /path/to/simple-rag-ask-my-notes
 python3.11 -m venv .venv #for the first time
 source .venv/bin/activate
 pip install -r requirements.txt

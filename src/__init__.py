@@ -1,1 +1,1 @@
-"""ask-my-notes: a from-scratch RAG pipeline you can read module by module."""
+"""simple-rag-ask-my-notes: a from-scratch RAG pipeline you can read module by module."""
