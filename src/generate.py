@@ -108,6 +108,6 @@ def generate_answer(
         model=model,
         messages=messages,
         temperature=temperature,
-    )
+    ) # That is a shared protocol — not a hook that can drive any agent or native SDK.
     content = response.choices[0].message.content
     return content or ""

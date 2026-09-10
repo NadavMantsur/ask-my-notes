@@ -13,6 +13,8 @@ import argparse
 from pathlib import Path
 
 from dotenv import load_dotenv
+# Same SDK as embed.py. This error means the local Ollama server is down,
+# not that an OpenAI cloud key is missing.
 from openai import APIConnectionError
 
 from src.chunk import chunk_documents
@@ -76,12 +78,13 @@ def ask(
     Pipeline role: this is the ask command. top_k and temperature take
     effect here without a new ingest.
     """
-    chroma = get_persistent_client(settings.chroma_path)
+    chroma = get_persistent_client(settings.chroma_path) # get the on-disk Chroma folder, usually ./chroma_db.
     collection = chroma.get_collection(
         name=settings.collection_name, embedding_function=None
-    )
+    ) # get the collection (chroma table), usually "my_notes".
     # Same embedding model as ingest — mixed models break nearest-neighbor.
     query_embedding = embed_fn([question], model=settings.embedding_model)[0]
+    
     chunks = retrieve_chunks(collection, query_embedding, k=settings.top_k)
 
     if show_chunks:

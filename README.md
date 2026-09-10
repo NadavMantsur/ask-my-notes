@@ -16,7 +16,7 @@ You need Python 3.11+. There is **no OpenAI (or other cloud) API key**. `ingest`
 
 ```bash
 cd /path/to/ask-my-notes
-python3.11 -m venv .venv
+python3.11 -m venv .venv #for the first time
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -49,6 +49,7 @@ ollama serve                           # leave this running
 In another terminal:
 
 ```bash
+source .venv/bin/activate
 ollama pull llama3.2:1b
 ```
 
@@ -170,6 +171,8 @@ python scripts/build_guide_pdf.py
 
 **Command:** `python -m src.cli ask "..."`
 
+**Assignment (after this phase):** v1 keeps `SYSTEM_PROMPT` as a constant and fills notes + question with f-strings. That is deliberate: the system rule has no placeholders, and the user message only interpolates `context` and `question`. Jinja2 would add a dependency without teaching anything new. Once you can explain `build_messages`, move the prompt into a `.j2` template that loops over chunks and fills `question`. Keep the tests: `orchid-42` and `wifi-and-office.md` must still appear in the rendered messages.
+
 ---
 
 ## Config
@@ -228,6 +231,8 @@ After a real ingest (local MiniLM, no cloud key):
 - PDF/HTML loaders (ingest your own PDFs as notes — not the learning guide already in `docs/`)
 - Streaming tokens
 - Optional CLI overrides (`--top-k`, `--temperature`) over `config.toml`
+- Make the chat backend configurable (Ollama vs another OpenAI-compatible provider, including a real OpenAI API key) so trying a different model or cloud key is config, not a code change
+- Jinja2 prompt templates (`.j2`) in place of f-strings in `src/generate.py` — see the assignment under phase 6
 - Rebuild the same app with **LangChain** (and optionally LlamaIndex) so each `src/` module maps onto a framework class
 
 ---

@@ -12,6 +12,9 @@ from __future__ import annotations
 
 import os
 
+# Importing the OpenAI SDK. The openai package is an HTTP client. 
+# We point it at local Ollama's OpenAI-compatible /v1 API, not at api.openai.com.
+# (for saving costs by avoiding the OpenAI API key)
 from openai import OpenAI
 
 DEFAULT_OLLAMA_BASE_URL = "http://localhost:11434/v1"
